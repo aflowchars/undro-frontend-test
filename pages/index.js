@@ -2,9 +2,12 @@ import Head from "next/head";
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Benefit from '../components/Benefit';
-import Services from '../components/Services';
+import Services from '../components/services/Services';
 import Footer from '../components/Footer';
-import BackTop from '../components/BackTop';
+import BackTop from '../components/utilities/BackTop';
+
+// Data
+import { ProgramData } from '../data/ProgramData';
 
 export default function Home () {
   return (
@@ -19,7 +22,7 @@ export default function Home () {
       
       <Hero />
       <Benefit />
-      <Services />
+      <Services programs={ProgramData} />
 
       <Footer />
 

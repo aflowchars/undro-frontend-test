@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react"
 
 export default function Navbar() {
-  // const [navbar, setNavbar] = useState(false)
   const [hideNavbar, setHideNavbar] = useState(false)
 
-  // const changeNavbarBg = () => {
-  //   window.scrollY >= 1081 ? setNavbar(false) : setNavbar(true)
-
-  // }
   const hideNavbarAll = () => {
     window.scrollY >= 160 ? setHideNavbar(true) : setHideNavbar(false);
   }

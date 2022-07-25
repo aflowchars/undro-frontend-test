@@ -3,3 +3,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.program-list::-webkit-scrollbar {
+  display: none;
+}
+
+.program-list {
+  scrollbar-width: none;
+}
