@@ -1,17 +1,23 @@
-import { useState } from 'react';
 import { ProgramData } from '../../data/ProgramData';
 import ProgramServices from './ProgramServices';
+import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react';
 
-export default function Services({ programs }) {
+export default function Services() {
+  const [width, setWidth] = useState(0);
+  const carousel = useRef();
+  
+  useEffect(() => {
+    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
+  }, []);
+  
   const prevSlide = () => {
     const slider = document.getElementById('slider');
-
     slider.scrollLeft -= 320;
   }
 
   const nextSlide = () => {
     const slider = document.getElementById('slider');
-
     slider.scrollLeft += 320;
   }
 
@@ -70,13 +76,16 @@ export default function Services({ programs }) {
             </div>
           </div>
 
-          <div id="slider" className="program-list col-span-9 flex items-center space-x-5 overflow-hidden overflow-x-scroll scroll-smooth">
-            {ProgramData.map((programs, index) => {
-              return (
-                <ProgramServices programs={programs} />
-              )
-            })}
-          </div>
+
+          <motion.div ref={carousel} id="slider" className="carousel col-span-9 min-w-full overflow-hidden cursor-grab program-list overflow-x-scroll scroll-smooth">
+            <motion.div drag="x" dragConstraints={{ right: 0, left: -width }} whileTap={{cursor: 'grabbing'}} className="inner-carousel flex items-center space-x-5">
+              {ProgramData.map((programs, index) => {
+                return (
+                  <ProgramServices key={index} programs={programs} />
+                )
+              })}
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

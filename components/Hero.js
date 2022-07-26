@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 export default function() {
   return(
     <section className="hero min-h-screen bg-primary text-white">
